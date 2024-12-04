@@ -1,0 +1,176 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Class Scheduler</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: rgb(255, 132, 50);
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: black;
+    }
+    .images-calendar-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: table;
+      text-align: center;
+    }
+    .image-left,
+    .image-right {
+      display: table-cell;
+      vertical-align: middle;
+      width: 200px;
+    }
+    .image-left img,
+    .image-right img {
+      max-width: 150px;
+      height: auto;
+    }
+    .calendar-container {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .calendar {
+      margin: 0 auto;
+    }
+    .day-header,
+    .cell {
+      background-color: grey;
+      color: white;
+      border: 1px solid white;
+      border-radius: 10px;
+      width: 120px;
+      height: 50px;
+      display: inline-block;
+      text-align: center;
+      line-height: 50px;
+      margin: 5px;
+    }
+    .cell textarea {
+      width: 90%;
+      height: 70%;
+      background-color: grey;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      resize: none;
+      display: block;
+      margin: auto;
+    }
+    .input-box {
+      background-color: grey;
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 40px auto;
+      text-align: center;
+      color: white;
+    }
+    .input-box input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid white;
+      border-radius: 5px;
+      background-color: white;
+    }
+    .time-input {
+      margin: 15px 0;
+    }
+    .checkbox-group {
+      margin: 10px 0;
+    }
+    .checkbox-group label {
+      margin: 0 10px;
+      color: white;
+      display: inline-block;
+    }
+    .button-group button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: 1px solid white;
+      background-color: grey;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .button-group button:hover {
+      background-color: white;
+      color: grey;
+    }
+  </style>
+</head>
+<body>
+  <h1>Class Scheduler</h1>
+
+  <div class="images-calendar-container">
+    <div class="image-left">
+      <img src="https://www.pngkey.com/png/full/242-2429697_benny-logo-oregon-state-beavers-mascot.png" alt="Left Image">
+    </div>
+
+    <div class="calendar-container">
+      <div class="calendar">
+        <div class="day-header">Monday</div>
+        <div class="day-header">Tuesday</div>
+        <div class="day-header">Wednesday</div>
+        <div class="day-header">Thursday</div>
+        <div class="day-header">Friday</div>
+
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+        <div class="cell"><textarea></textarea></div>
+      </div>
+    </div>
+
+    <div class="image-right">
+      <img src="https://seeklogo.com/images/O/oregon-state-beavers-logo-8173778425-seeklogo.com.png" alt="Right Image">
+    </div>
+  </div>
+
+  <div class="input-box">
+    <h3>Add New Class:</h3>
+    <input type="text" placeholder="Enter class name"><br>
+    <input type="text" placeholder="Enter class subject"><br>
+    <div class="time-input">
+      <input type="text" placeholder="From"> to <input type="text" placeholder="To">
+    </div>
+    <div class="checkbox-group">
+      <label><input type="checkbox"> M</label>
+      <label><input type="checkbox"> T</label>
+      <label><input type="checkbox"> W</label>
+      <label><input type="checkbox"> Th</label>
+      <label><input type="checkbox"> F</label>
+    </div>
+    <div class="button-group">
+      <button>Add</button>
+      <button>Cancel</button>
+    </div>
+  </div>
+</body>
+</html>
