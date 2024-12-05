@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+    background-color: rgb(255, 132, 50);
+}
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: black;
+}
+.images-calendar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: table;
+    text-align: center;
+}
+.image-left,
+.image-right {
+    display: table-cell;
+    vertical-align: middle;
+    width: 200px;
+}
+.image-left img,
+.image-right img {
+    max-width: 150px;
+    height: auto;
+}
+.calendar-container {
+    display: table-cell;
+    vertical-align: middle;
+}
+.calendar {
+    margin: 0 auto;
+}
+.day-header,
+.cell {
+    background-color: grey;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 120px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    margin: 5px;
+}
+.cell textarea {
+    width: 90%;
+    height: 70%;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    display: block;
+    margin: auto;
+}
+.input-box {
+    background-color: grey;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+    color: white;
+}
+.input-box input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: white;
+}
+.time-input {
+    margin: 15px 0;
+}
+.checkbox-group {
+    margin: 10px 0;
+}
+.checkbox-group label {
+    margin: 0 10px;
+    color: white;
+    display: inline-block;
+}
+.button-group button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1px solid white;
+    background-color: grey;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.button-group button:hover {
+    background-color: white;
+    color: grey;
+}
