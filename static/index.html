@@ -1,73 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Class Scheduler</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Class Scheduler</h1>
-
-  <div class="images-calendar-container">
-    <div class="image-left">
-      <img src="https://www.pngkey.com/png/full/242-2429697_benny-logo-oregon-state-beavers-mascot.png" alt="Left Image">
+  <header>
+    <div class="header-container">
+      <img src="https://www.pngkey.com/png/full/242-2429697_benny-logo-oregon-state-beavers-mascot.png" alt="Left Image" class="header-image">
+      <h1>Class Scheduler</h1>
+      <img src="https://seeklogo.com/images/O/oregon-state-beavers-logo-8173778425-seeklogo.com.png" alt="Right Image" class="header-image">
     </div>
-
-    <div class="calendar-container">
-      <div class="calendar">
-        <div class="day-header">Monday</div>
-        <div class="day-header">Tuesday</div>
-        <div class="day-header">Wednesday</div>
-        <div class="day-header">Thursday</div>
-        <div class="day-header">Friday</div>
-
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
-        <div class="cell"><textarea></textarea></div>
+  </header>
+  <div class="calendar">
+    <!-- Sunday -->
+    <div class="day-column">
+      <div class="day-header">Sunday</div>
+      <div class="hour-labels">
+        <div class="hour">12am</div>
+        <div class="hour">1am</div>
+        <div class="hour">2am</div>
+        <div class="hour">3am</div>
+        <div class="hour">4am</div>
+        <div class="hour">5am</div>
+        <div class="hour">6am</div>
+        <div class="hour">7am</div>
+        <div class="hour">8am</div>
+        <div class="hour">9am</div>
+        <div class="hour">10am</div>
+        <div class="hour">11am</div>
+        <div class="hour">12pm</div>
       </div>
     </div>
-
-    <div class="image-right">
-      <img src="https://seeklogo.com/images/O/oregon-state-beavers-logo-8173778425-seeklogo.com.png" alt="Right Image">
+    <!-- Monday -->
+    <div class="day-column">
+      <div class="day-header">Monday</div>
+      <div class="hour-labels">
+        <div class="hour">12am</div>
+        <div class="hour">1am</div>
+        <div class="hour">2am</div>
+        <div class="hour">3am</div>
+        <div class="hour">4am</div>
+        <div class="hour">5am</div>
+        <div class="hour">6am</div>
+        <div class="hour">7am</div>
+        <div class="hour">8am</div>
+        <div class="hour">9am</div>
+        <div class="hour">10am</div>
+        <div class="hour">11am</div>
+        <div class="hour">12pm</div>
+      </div>
+    </div>
+    <!-- Tuesday -->
+    <div class="day-column">
+      <div class="day-header">Tuesday</div>
+      <div class="hour-labels">
+        <div class="hour">12am</div>
+        <div class="hour">1am</div>
+        <div class="hour">2am</div>
+        <div class="hour">3am</div>
+        <div class="hour">4am</div>
+        <div class="hour">5am</div>
+        <div class="hour">6am</div>
+        <div class="hour">7am</div>
+        <div class="hour">8am</div>
+        <div class="hour">9am</div>
+        <div class="hour">10am</div>
+        <div class="hour">11am</div>
+        <div class="hour">12pm</div>
+      </div>
+    </div>
+    <!-- Wednesday -->
+    <div class="day-column">
+      <div class="day-header">Wednesday</div>
+      <div class="hour-labels">
+        <div class="hour">12am</div>
+        <div class="hour">1am</div>
+        <div class="hour">2am</div>
+        <div class="hour">3am</div>
+        <div class="hour">4am</div>
+        <div class="hour">5am</div>
+        <div class="hour">6am</div>
+        <div class="hour">7am</div>
+        <div class="hour">8am</div>
+        <div class="hour">9am</div>
+        <div class="hour">10am</div>
+        <div class="hour">11am</div>
+        <div class="hour">12pm</div>
+      </div>
+    </div>
+    <!-- Thursday -->
+    <div class="day-column">
+      <div class="day-header">Thursday</div>
+      <div class="hour-labels">
+        <div class="hour">12am</div>
+        <div class="hour">1am</div>
+        <div class="hour">2am</div>
+        <div class="hour">3am</div>
+        <div class="hour">4am</div>
+        <div class="hour">5am</div>
+        <div class="hour">6am</div>
+        <div class="hour">7am</div>
+        <div class="hour">8am</div>
+        <div class="hour">9am</div>
+        <div class="hour">10am</div>
+        <div class="hour">11am</div>
+        <div class="hour">12pm</div>
+      </div>
+    </div>
+    <!-- Friday -->
+    <div class="day-column">
+      <div class="day-header">Friday</div>
+      <div class="hour-labels">
+        <div class="hour">12am</div>
+        <div class="hour">1am</div>
+        <div class="hour">2am</div>
+        <div class="hour">3am</div>
+        <div class="hour">4am</div>
+        <div class="hour">5am</div>
+        <div class="hour">6am</div>
+        <div class="hour">7am</div>
+        <div class="hour">8am</div>
+        <div class="hour">9am</div>
+        <div class="hour">10am</div>
+        <div class="hour">11am</div>
+        <div class="hour">12pm</div>
+      </div>
+    </div>
+    <!-- Saturday -->
+    <div class="day-column">
+      <div class="day-header">Saturday</div>
+      <div class="hour-labels">
+        <div class="hour">12am</div>
+        <div class="hour">1am</div>
+        <div class="hour">2am</div>
+        <div class="hour">3am</div>
+        <div class="hour">4am</div>
+        <div class="hour">5am</div>
+        <div class="hour">6am</div>
+        <div class="hour">7am</div>
+        <div class="hour">8am</div>
+        <div class="hour">9am</div>
+        <div class="hour">10am</div>
+        <div class="hour">11am</div>
+        <div class="hour">12pm</div>
+      </div>
     </div>
   </div>
-
-  <div class="input-box">
-    <h3>Add New Class:</h3>
-    <input type="text" placeholder="Enter class name"><br>
-    <input type="text" placeholder="Enter class subject"><br>
-    <div class="time-input">
-      <input type="text" placeholder="From"> to <input type="text" placeholder="To">
-    </div>
-    <div class="checkbox-group">
-      <label><input type="checkbox"> M</label>
-      <label><input type="checkbox"> T</label>
-      <label><input type="checkbox"> W</label>
-      <label><input type="checkbox"> Th</label>
-      <label><input type="checkbox"> F</label>
-    </div>
-    <div class="button-group">
-      <button>Add</button>
-      <button>Cancel</button>
-    </div>
-  </div>
+  <footer class="footer-section">
+    <p>space for filters</p>
+    <button class="footer-button">+</button>
+  </footer>
 </body>
 </html>
