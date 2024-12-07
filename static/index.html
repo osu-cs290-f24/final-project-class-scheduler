@@ -163,70 +163,76 @@
         <div class="hour">9pm</div>
       </div>
     </div>
+</div>
+<footer class="footer-section">
+  <div class="filter-container">
+    <label for="filter-name">Filter by:</label>
+    <div class="filter-group">
+      <div class="filter-option">
+        <label for="filter-name">Name</label>
+        <input type="text" id="filter-name" placeholder="Enter class name">
+      </div>
+      <div class="filter-option">
+        <label for="filter-subject">Subject</label>
+        <input type="text" id="filter-subject" placeholder="Enter subject">
+      </div>
+    </div>
   </div>
-  <footer class="footer-section">
-    <p>space for filters</p>
 
+  <button class="footer-button" id="footer-button">Add Class</button>
 
-    <button class="footer-button" id="footer-button">Add Class</button>
-
-    <div id="modal-backdrop" class="hidden"></div>
-    <div id="add-class-modal" class="hidden">
-      <div class="modal-dialog">
-
-        <div class="modal-header">
-          <h3>Add a Class</h3>
-          <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+  <div id="modal-backdrop" class="hidden"></div>
+  <div id="add-class-modal" class="hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Add a Class</h3>
+        <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="class-input-element">
+          <label for="class-name-input">Class Name</label>
+          <input type="text" id="class-name-input"></input>
         </div>
-
-    <div class="modal-body">
-
-      <div class="class-input-element">
-        <label for="class-name-input">Class Name</label>
-        <input type="text" id="class-name-input"></input>
+        <div class="class-input-element">
+          <label for="class-subject-input">Subject</label>
+          <input type="text" id="class-subject-input">
+        </div>
+        <div class="class-input-element">
+          <label for="class-from-time-input">From:</label>
+          <input type="time" id="class-from-time-input" name="class-from-time-input">
+          <label for="class-to-time-input">To:</label>
+          <input type="time" id="class-to-time-input" name="class-to-time-input">
+        </div>
+        <div class="class-input-element">
+          <fieldset id="input-days" class="input-fieldset">
+            <div>
+              <input type="checkbox" name="input-days" id="input-days-monday" value="monday">
+              <label for="input-days-monday">Monday</label>
+            </div>
+            <div>
+              <input type="checkbox" name="input-days" id="input-days-tuesday" value="tuesday">
+              <label for="input-days-tuesday">Tuesday</label>
+            </div>
+            <div>
+              <input type="checkbox" name="input-days" id="input-days-wednesday" value="wednesday">
+              <label for="input-days-wednesday">Wednesday</label>
+            </div>
+            <div>
+              <input type="checkbox" name="input-days" id="input-days-thursday" value="thursday">
+              <label for="input-days-thursday">Thursday</label>
+            </div>
+            <div>
+              <input type="checkbox" name="input-days" id="input-days-friday" value="friday">
+              <label for="input-days-friday">Friday</label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="modal-accept" class="action-button">Add Class</button>
+        </div>
       </div>
-
-      <div class="class-input-element">
-        <label for="class-subject-input">Subject</label>
-        <input type="text" id="class-subject-input">
-      </div>
-
-      <div class="class-input-element">
-        <label for="class-from-time-input">From:</label>
-        <input type="time" id="class-from-time-input" name="class-from-time-input">
-
-        <label for="class-to-time-input">To:</label>
-        <input type="time" id="class-to-time-input" name="class-to-time-input">
-      </div>
-
-      <div class="class-input-element">
-        <fieldset id="input-days" class="input-fieldset">
-          <div>
-            <input type="checkbox" name="input-days" id="input-days-monday" value="monday">
-            <label for="input-days-monday">Monday</label>
-          </div>
-          <div>
-            <input type="checkbox" name="input-days" id="input-days-tuesday" value="tuesday">
-            <label for="input-days-tuesday">Tuesday</label>
-          </div>
-          <div>
-            <input type="checkbox" name="input-days" id="input-days-wednesday" value="wednesday">
-            <label for="input-days-wednesday">Wednesday</label>
-          </div>
-          <div>
-            <input type="checkbox" name="input-days" id="input-days-thursday" value="thursday">
-            <label for="input-days-thursday">Thursday</label>
-          </div>
-          <div>
-            <input type="checkbox" name="input-days" id="input-days-friday" value="friday">
-            <label for="input-days-friday">Friday</label>
-          </div>
-        </fieldset>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" id="modal-accept" class="action-button">Add Class</button>
-      </div>
-  </footer>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
