@@ -1,3 +1,23 @@
-[
-    
-]
+{
+  "MTH 260": {
+    "name": "MTH 260",
+    "subject": "Calculus",
+    "fromTime": "10:00",
+    "toTime": "12:00",
+    "days": [
+      "monday",
+      "wednesday",
+      "friday"
+    ]
+  },
+  "CS 261": {
+    "name": "CS 261",
+    "subject": "Data Structures",
+    "fromTime": "12:00",
+    "toTime": "13:00",
+    "days": [
+      "tuesday",
+      "thursday"
+    ]
+  }
+}

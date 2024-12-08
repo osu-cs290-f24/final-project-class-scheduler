@@ -32,15 +32,76 @@ function checkEmpty(){
 
     if (name == "" || subject == "" || to_time == undefined || from_time == undefined
         || (!monday && !tuesday && !wednesday && !thursday && !friday)){
-            alert("One or more required fields is empty!");
+           alert("One or more required fields is empty!");
+           return true;
     } else {
-        
+        return false;
     }
 }
 
+
+function handleModalAcceptClick() {
+    var newClass = document.getElementById("class-name-input").value;
+    var newSubject = document.getElementById("class-subject-input").value;
+    var newFromTime = document.getElementById("class-from-time-input").value; 
+    var newToTime = document.getElementById("class-to-time-input").value; 
+    var newDays = [];
+    var daysField = [];
+    daysField = document.querySelectorAll('[name="input-days"]');
+    for(var i=0; i < daysField.length; i++){
+        if(daysField[i].checked){
+            newDays.push(daysField[i].value);
+        }
+    }
+    if (!newClass || !newSubject || !newFromTime || ! newToTime || !newDays) {
+        alert("One or more required fields is empty!");
+    } 
+    else {    
+        fetch('/addClass', {
+            method: "POST",
+            body: JSON.stringify({
+                name: newClass,
+                subject: newSubject,
+                fromTime: newFromTime,
+                toTime: newToTime,
+                days: newDays
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            if (res.status === 200) {
+                hideElement();
+            // Does the template stuff
+            /*
+              var photoCardTemplate = Handlebars.templates.photoCard
+              var newPhotoCardHTML = photoCardTemplate({
+                url: photoURL,
+                caption: caption
+              })
+              var photoCardContainer = document.querySelector('.photo-card-container')
+              photoCardContainer.insertAdjacentHTML('beforeend', newPhotoCardHTML)*/
+            } else {
+                /*
+              alert("An error occurred saving the photo card.")
+              */
+            }
+          }).catch(function (err) {
+            /*
+            alert("An error occurred saving the photo card.")
+            */
+          })
+    }
+
+}
+
+var modalAcceptButton = document.getElementById('modal-accept')
+modalAcceptButton.addEventListener('click', handleModalAcceptClick)
 
 document.getElementById("footer-button").addEventListener("click", unhideElement);
 
 document.getElementById("modal-close").addEventListener("click", hideElement);
 
-document.getElementById("modal-accept").addEventListener("click", checkEmpty);
+// document.getElementById("modal-accept").addEventListener("click", checkEmpty);
+
+
