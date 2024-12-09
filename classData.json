@@ -19,5 +19,14 @@
       "tuesday",
       "thursday"
     ]
+  },
+  "Jack": {
+    "name": "Jack",
+    "subject": "Math",
+    "fromTime": "07:00",
+    "toTime": "10:00",
+    "days": [
+      "wednesday"
+    ]
   }
 }
