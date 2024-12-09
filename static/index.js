@@ -1,13 +1,6 @@
 function unhideElement(){
-    alert("Yeah")
-    console.log("Yeah")
     document.getElementById("modal-backdrop").classList.remove("hidden");
     document.getElementById("add-class-modal").classList.remove("hidden");
-}
-
-function test(){
-    alert("YEAH!")
-    alert("YEAH!")
 }
 
 function hideElement(){
@@ -46,14 +39,11 @@ function hideElement(){
     }
 }*/
 
-var classData = require("./classData.json")
-
 function handleModalAcceptClick() {
-    alert("Yeah") 
     var newClass = document.getElementById("class-name-input").value;
     var newSubject = document.getElementById("class-subject-input").value;
-    var newFromTime = document.getElementById("class-from-time-input").value.trim(); 
-    var newToTime = document.getElementById("class-to-time-input").value.trim(); 
+    var newFromTime = document.getElementById("class-from-time-input").value; 
+    var newToTime = document.getElementById("class-to-time-input").value; 
     var newDays = [];
     var daysField = [];
     daysField = document.querySelectorAll('[name="input-days"]');
@@ -66,6 +56,8 @@ function handleModalAcceptClick() {
     
     // Ensure the class isn't at another time as another class 
     var collidingTimes = false;
+
+    /*
     for(var i = 0; i < newDays.length; i++){
         for(var j = 0; j < classData.length; j++){
             for(var k = 0; k < classData[j].days.length; k++){
@@ -78,8 +70,7 @@ function handleModalAcceptClick() {
                 }
             }
         }
-    }
-    
+    }*/
 
     if (!newClass || !newSubject || !newFromTime || ! newToTime || newDays[0] == null) {
         alert("One or more required fields is empty!");
@@ -92,11 +83,6 @@ function handleModalAcceptClick() {
     else if(collidingTimes){
         alert("Class time collides with another class!");
     }
-    if (!newClass || !newSubject || !newFromTime || !newToTime || !newDays) { // newDays check does not work
-        alert("One or more required fields is empty!");
-    }  //else if (newFromTime < '7:00' || newToTime > '21:00'){ // Does not work
-       //  alert("The specified time is not allowed!")
-    //}
     else {    
         fetch('/addClass', {
             method: "POST",
@@ -131,20 +117,14 @@ function handleModalAcceptClick() {
             /*
             alert("An error occurred saving the photo card.")
             */
-          })
+        })
     }
-
 }
-
 var modalAcceptButton = document.getElementById('modal-accept')
 modalAcceptButton.addEventListener('click', handleModalAcceptClick)
 
-var addClassesButton = document.getElementById("footer-button")
-addClassesButton.addEventListener("click", test);
-addClassesButton.addEventListener("click", unhideElement);
+document.getElementById("footer-button").addEventListener("click", unhideElement);
 
 document.getElementById("modal-close").addEventListener("click", hideElement);
 
 // document.getElementById("modal-accept").addEventListener("click", checkEmpty);
-
-

@@ -28,5 +28,14 @@
     "days": [
       "wednesday"
     ]
+  },
+  "WR 214": {
+    "name": "WR 214",
+    "subject": "Writing",
+    "fromTime": "10:00",
+    "toTime": "11:00",
+    "days": [
+      "thursday"
+    ]
   }
 }
