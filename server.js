@@ -20,6 +20,13 @@ app.get("/", function(req, res, next){
     res.render("schedule")
 })
 
+app.get('/classData.json', (req, res) => {
+  if (req.headers['x-requested-with'] === 'fetch-client') {
+      res.sendFile(__dirname + '/classData.json');
+  } else {
+      res.status(403).send('Access Denied');
+  }
+});
 
 app.post('/addClass', function (req, res, next) {
     console.log("  -- req.body:", req.body)

@@ -23,10 +23,10 @@
   "WR 227": {
     "name": "WR 227",
     "subject": "Writing",
-    "fromTime": "08:01",
-    "toTime": "10:01",
+    "fromTime": "10:00",
+    "toTime": "12:00",
     "days": [
-      "wednesday"
+      "thursday"
     ]
   },
   "WR 214": {
