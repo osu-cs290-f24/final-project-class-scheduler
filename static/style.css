@@ -314,8 +314,21 @@ padding: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.error-container{
-  display: flex;
-  justify-content: center;
-  align-items: vertical;
+.error-container {
+  text-align: center; /* Centers the text horizontally */
+  font-family: Arial, sans-serif; /* Sets a clean font */
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.error-container h2 {
+  font-size: 72px; /* Large font for the error code */
+  color: #ff7b00; /* Eye-catching color */
+  margin: 0; /* Removes any extra space */
+}
+
+.error-container h3 {
+  font-size: 24px; /* Smaller font for the message */
+  color: #333; /* Subtle text color */
+  margin: 10px 0; /* Adds some space between the headers */
 }
