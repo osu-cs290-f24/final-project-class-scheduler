@@ -20,7 +20,6 @@ app.get("/", function(req, res, next){
     res.render("schedule")
 })
 
-
 app.post('/addClass', function (req, res, next) {
     console.log("  -- req.body:", req.body)
     if (req.body) {
