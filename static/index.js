@@ -120,11 +120,22 @@ function handleModalAcceptClick() {
         })
     }
 }
+
+function filter(){
+    var className = document.getElementById("filter-name").value;
+    var classSubject = document.getElementById("filter-subject").value;
+
+
+}
+
+
 var modalAcceptButton = document.getElementById('modal-accept')
 modalAcceptButton.addEventListener('click', handleModalAcceptClick)
 
 document.getElementById("footer-button").addEventListener("click", unhideElement);
 
 document.getElementById("modal-close").addEventListener("click", hideElement);
+
+document.getElementById("filter-update-button").addEventListener("click", filter);
 
 // document.getElementById("modal-accept").addEventListener("click", checkEmpty);
