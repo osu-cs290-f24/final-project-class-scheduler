@@ -6,7 +6,7 @@ var exphbs = require('express-handlebars')
 var classData = require("./classData.json")
 
 var app = express()
-var port = process.env.PORT || 8000
+var port = process.env.PORT || 8500
 
 app.engine("handlebars", exphbs.engine({
     defaultLayout: "main"
