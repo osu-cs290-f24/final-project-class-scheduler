@@ -39,13 +39,10 @@ function hideElement(){
     }
 }*/
 
-/*
-// Causes buttons to not work
-var classData = JSON.parse(classData);
-*/
+
 
 // import classData from ".classData.json" assert { type: "json" };
-var classData;
+var classDataJSON;
 fetch('/classData.json', {
     headers: { 'X-Requested-With': 'fetch-client' } // Add the custom header
 })
@@ -55,12 +52,16 @@ fetch('/classData.json', {
         }
         return response.json(); // Parse JSON response
     })
-    .then(classData => {
-        console.log("Class Data Loaded:", classData);
+    .then(classDataJSON => {
+        console.log("Class Data Loaded:", classDataJSON);
     })
     .catch(error => {
         console.error("Error fetching classData.json:", error);
     });
+
+    
+
+
 
 function handleModalAcceptClick() {
     var newClass = document.getElementById("class-name-input").value;
@@ -80,7 +81,8 @@ function handleModalAcceptClick() {
     // Ensure the class isn't at another time as another class 
     var collidingTimes = false;
     console.log("Day length: ", newDays.length); 
-    console.log("Class data: ", classData.length); 
+    console.log("Class Data[0]:", classDataJSON[0].name);
+
 
     for(var i = 0; i < newDays.length; i++){
         for(var j = 0; j < classData.length; j++){
