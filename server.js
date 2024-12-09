@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(express.static('static'))
 
 app.get("/", function(req, res, next){
-    res.status(200).sendFile(__dirname + "/static/index.html")
+    res.render("schedule")
 })
 
 

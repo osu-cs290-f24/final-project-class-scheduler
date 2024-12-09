@@ -28,12 +28,5 @@
     "days": [
       "wednesday"
     ]
-  },
-  "TH": {
-    "name": "TH",
-    "subject": "EF",
-    "fromTime": "19:04",
-    "toTime": "20:04",
-    "days": []
   }
 }

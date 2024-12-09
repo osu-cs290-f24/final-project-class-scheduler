@@ -55,9 +55,9 @@ function handleModalAcceptClick() {
     }
     if (!newClass || !newSubject || !newFromTime || !newToTime || !newDays) { // newDays check does not work
         alert("One or more required fields is empty!");
-    }  else if (newFromTime < '7:00' || newToTime > '21:00'){ // Does not work
-        alert("The specified time is not allowed!")
-    }
+    }  //else if (newFromTime < '7:00' || newToTime > '21:00'){ // Does not work
+       //  alert("The specified time is not allowed!")
+    //}
     else {    
         fetch('/addClass', {
             method: "POST",
