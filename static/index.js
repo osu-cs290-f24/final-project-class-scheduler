@@ -39,25 +39,50 @@ function hideElement(){
     }
 }*/
 
-
 function handleModalAcceptClick() {
     var newClass = document.getElementById("class-name-input").value;
     var newSubject = document.getElementById("class-subject-input").value;
-    var newFromTime = document.getElementById("class-from-time-input").value.trim(); 
-    var newToTime = document.getElementById("class-to-time-input").value.trim(); 
+    var newFromTime = document.getElementById("class-from-time-input").value; 
+    var newToTime = document.getElementById("class-to-time-input").value; 
     var newDays = [];
     var daysField = [];
     daysField = document.querySelectorAll('[name="input-days"]');
+
     for(var i=0; i < daysField.length; i++){
         if(daysField[i].checked){
             newDays.push(daysField[i].value);
         }
     }
-    if (!newClass || !newSubject || !newFromTime || !newToTime || !newDays) { // newDays check does not work
+    
+    // Ensure the class isn't at another time as another class 
+    var collidingTimes = false;
+
+    /*
+    for(var i = 0; i < newDays.length; i++){
+        for(var j = 0; j < classData.length; j++){
+            for(var k = 0; k < classData[j].days.length; k++){
+                if(newDays[i] == classData[j].days[k]){
+                    if((newFromTime < classData[j].fromTime && newToTime > classData[j].fromTimeTime) 
+                        || (classData[j].fromTime < newFromTime && classData[j].toTime > newFromTime)){
+                        collidingTimes = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }*/
+
+    if (!newClass || !newSubject || !newFromTime || ! newToTime || newDays[0] == null) {
         alert("One or more required fields is empty!");
-    }  //else if (newFromTime < '7:00' || newToTime > '21:00'){ // Does not work
-       //  alert("The specified time is not allowed!")
-    //}
+    } 
+    // Ensure the class is between 7:00 AM and 8:00 PM
+    else if((newFromTime < "07:00" || newFromTime > "18:00") || (newToTime < "08:00" || newToTime > "20:00")){
+        alert("Classes must be between 7:00 AM and 8:00 PM");
+    }
+    // Ensure the class isn't at another time as another class 
+    else if(collidingTimes){
+        alert("Class time collides with another class!");
+    }
     else {    
         fetch('/addClass', {
             method: "POST",
@@ -92,11 +117,9 @@ function handleModalAcceptClick() {
             /*
             alert("An error occurred saving the photo card.")
             */
-          })
+        })
     }
-
 }
-
 var modalAcceptButton = document.getElementById('modal-accept')
 modalAcceptButton.addEventListener('click', handleModalAcceptClick)
 
@@ -105,5 +128,3 @@ document.getElementById("footer-button").addEventListener("click", unhideElement
 document.getElementById("modal-close").addEventListener("click", hideElement);
 
 // document.getElementById("modal-accept").addEventListener("click", checkEmpty);
-
-
