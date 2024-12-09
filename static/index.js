@@ -39,6 +39,29 @@ function hideElement(){
     }
 }*/
 
+/*
+// Causes buttons to not work
+var classData = JSON.parse(classData);
+*/
+
+// import classData from ".classData.json" assert { type: "json" };
+var classData;
+fetch('/classData.json', {
+    headers: { 'X-Requested-With': 'fetch-client' } // Add the custom header
+})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to fetch JSON: ${response.status} - ${response.statusText}`);
+        }
+        return response.json(); // Parse JSON response
+    })
+    .then(classData => {
+        console.log("Class Data Loaded:", classData);
+    })
+    .catch(error => {
+        console.error("Error fetching classData.json:", error);
+    });
+
 function handleModalAcceptClick() {
     var newClass = document.getElementById("class-name-input").value;
     var newSubject = document.getElementById("class-subject-input").value;
@@ -56,11 +79,14 @@ function handleModalAcceptClick() {
     
     // Ensure the class isn't at another time as another class 
     var collidingTimes = false;
+    console.log("Day length: ", newDays.length); 
+    console.log("Class data: ", classData.length); 
 
-    /*
     for(var i = 0; i < newDays.length; i++){
         for(var j = 0; j < classData.length; j++){
+        console.log("ClassData: ", classData[j]); 
             for(var k = 0; k < classData[j].days.length; k++){
+                console.log("ClassData.days: ", classData[j].days); 
                 if(newDays[i] == classData[j].days[k]){
                     if((newFromTime < classData[j].fromTime && newToTime > classData[j].fromTimeTime) 
                         || (classData[j].fromTime < newFromTime && classData[j].toTime > newFromTime)){
@@ -70,7 +96,7 @@ function handleModalAcceptClick() {
                 }
             }
         }
-    }*/
+    }
 
     if (!newClass || !newSubject || !newFromTime || ! newToTime || newDays[0] == null) {
         alert("One or more required fields is empty!");
@@ -83,7 +109,9 @@ function handleModalAcceptClick() {
     else if(collidingTimes){
         alert("Class time collides with another class!");
     }
-    else {    
+    else {  
+        hideElement();
+        /*
         fetch('/addClass', {
             method: "POST",
             body: JSON.stringify({
@@ -100,24 +128,21 @@ function handleModalAcceptClick() {
             if (res.status === 200) {
                 hideElement();
             // Does the template stuff
-            /*
               var photoCardTemplate = Handlebars.templates.photoCard
               var newPhotoCardHTML = photoCardTemplate({
                 url: photoURL,
                 caption: caption
               })
               var photoCardContainer = document.querySelector('.photo-card-container')
-              photoCardContainer.insertAdjacentHTML('beforeend', newPhotoCardHTML)*/
+              photoCardContainer.insertAdjacentHTML('beforeend', newPhotoCardHTML)
             } else {
-                /*
               alert("An error occurred saving the photo card.")
-              */
             }
           }).catch(function (err) {
-            /*
+            
             alert("An error occurred saving the photo card.")
-            */
-        })
+            
+        })*/
     }
 }
 
