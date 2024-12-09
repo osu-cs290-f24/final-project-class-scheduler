@@ -332,3 +332,58 @@ padding: 10px;
   color: #333; /* Subtle text color */
   margin: 10px 0; /* Adds some space between the headers */
 }
+
+  /* section for individual class strucure */
+
+.class-box {
+    border: 2px solid #4CAF50; /* border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    padding: 20px; /* Spacing inside the box */
+    margin: 15px; /* Spacing between boxes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 300px; /* Limit box width */
+    font-family: 'Arial', sans-serif; /* Clean font */
+}
+
+.remove-class-btn {
+  position: absolute; /* Position relative to the box */
+  top: 10px; /* Slightly inset from the top */
+  right: 10px; /* Slightly inset from the right */
+  background: none; /* No background */
+  border: none; /* No border */
+  color: #f44336; /* Red color for the "X" */
+  font-size: 20px; /* Slightly larger for visibility */
+  font-weight: bold; /* Bold for emphasis */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.remove-class-btn:hover {
+  color: #d32f2f; /* Darker red on hover */
+}
+
+/* Class name styling */
+.class-name {
+    font-size: 24px; /* Large font size for title */
+    font-weight: bold; /* Emphasize the name */
+    color: #333; /* Dark text */
+    margin-bottom: 10px; /* Space below the name */
+    text-align: center; /* Center the title */
+}
+
+/* Class subject styling */
+.class-subject {
+    font-size: 18px; /* Medium font size */
+    color: #555; /* Slightly lighter text color */
+    margin-bottom: 8px; /* Space below the subject */
+    text-align: center; /* Center the subject */
+}
+
+/* Time styling */
+.class-time {
+    font-size: 16px; /* Smaller font size for times */
+    color: #666; /* Light gray text color */
+    margin-bottom: 6px; /* Space below the time */
+    text-align: center; /* Center the time */
+}
