@@ -1,8 +1,13 @@
-var classData = require("./classData.json")
-
 function unhideElement(){
+    alert("Yeah")
+    console.log("Yeah")
     document.getElementById("modal-backdrop").classList.remove("hidden");
     document.getElementById("add-class-modal").classList.remove("hidden");
+}
+
+function test(){
+    alert("YEAH!")
+    alert("YEAH!")
 }
 
 function hideElement(){
@@ -21,7 +26,7 @@ function hideElement(){
     document.getElementById("input-days-friday").checked = false;
 }
 
-function checkEmpty(){
+/*function checkEmpty(){
     var name = document.getElementById("class-name-input").value;
     var subject = document.getElementById("class-subject-input").value;
     var to_time = document.getElementById("class-to-time-input").value;
@@ -32,22 +37,23 @@ function checkEmpty(){
     var thursday = document.getElementById("input-days-thursday").checked;
     var friday = document.getElementById("input-days-friday").checked;
 
-    if (name == "" || subject == "" || to_time == undefined || from_time == undefined
+    if (name == "" || subject == "" || from_time == undefined || to_time == undefined
         || (!monday && !tuesday && !wednesday && !thursday && !friday)){
            alert("One or more required fields is empty!");
            return true;
     } else {
         return false;
     }
-}
+}*/
 
+var classData = require("./classData.json")
 
 function handleModalAcceptClick() {
     alert("Yeah") 
     var newClass = document.getElementById("class-name-input").value;
     var newSubject = document.getElementById("class-subject-input").value;
-    var newFromTime = document.getElementById("class-from-time-input").value; 
-    var newToTime = document.getElementById("class-to-time-input").value; 
+    var newFromTime = document.getElementById("class-from-time-input").value.trim(); 
+    var newToTime = document.getElementById("class-to-time-input").value.trim(); 
     var newDays = [];
     var daysField = [];
     daysField = document.querySelectorAll('[name="input-days"]');
@@ -57,7 +63,7 @@ function handleModalAcceptClick() {
             newDays.push(daysField[i].value);
         }
     }
-    /*
+    
     // Ensure the class isn't at another time as another class 
     var collidingTimes = false;
     for(var i = 0; i < newDays.length; i++){
@@ -73,7 +79,7 @@ function handleModalAcceptClick() {
             }
         }
     }
-    */
+    
 
     if (!newClass || !newSubject || !newFromTime || ! newToTime || newDays[0] == null) {
         alert("One or more required fields is empty!");
@@ -86,6 +92,11 @@ function handleModalAcceptClick() {
     else if(collidingTimes){
         alert("Class time collides with another class!");
     }
+    if (!newClass || !newSubject || !newFromTime || !newToTime || !newDays) { // newDays check does not work
+        alert("One or more required fields is empty!");
+    }  //else if (newFromTime < '7:00' || newToTime > '21:00'){ // Does not work
+       //  alert("The specified time is not allowed!")
+    //}
     else {    
         fetch('/addClass', {
             method: "POST",
@@ -128,7 +139,9 @@ function handleModalAcceptClick() {
 var modalAcceptButton = document.getElementById('modal-accept')
 modalAcceptButton.addEventListener('click', handleModalAcceptClick)
 
-document.getElementById("footer-button").addEventListener("click", unhideElement);
+var addClassesButton = document.getElementById("footer-button")
+addClassesButton.addEventListener("click", test);
+addClassesButton.addEventListener("click", unhideElement);
 
 document.getElementById("modal-close").addEventListener("click", hideElement);
 

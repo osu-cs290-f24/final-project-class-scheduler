@@ -6,7 +6,7 @@ var exphbs = require('express-handlebars')
 var classData = require("./classData.json")
 
 var app = express()
-var port = process.env.PORT || 8000
+var port = process.env.PORT || 8500
 
 app.engine("handlebars", exphbs.engine({
     defaultLayout: "main"
@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(express.static('static'))
 
 app.get("/", function(req, res, next){
-    res.status(200).sendFile(__dirname + "/static/index.html")
+    res.render("schedule")
 })
 
 

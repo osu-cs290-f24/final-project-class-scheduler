@@ -20,11 +20,11 @@
       "thursday"
     ]
   },
-  "Jack": {
-    "name": "Jack",
-    "subject": "Math",
-    "fromTime": "07:00",
-    "toTime": "10:00",
+  "WR 227": {
+    "name": "WR 227",
+    "subject": "Writing",
+    "fromTime": "08:01",
+    "toTime": "10:01",
     "days": [
       "wednesday"
     ]
