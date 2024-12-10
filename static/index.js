@@ -19,55 +19,18 @@ function hideElement(){
     document.getElementById("input-days-friday").checked = false;
 }
 
-/*function checkEmpty(){
-    var name = document.getElementById("class-name-input").value;
-    var subject = document.getElementById("class-subject-input").value;
-    var to_time = document.getElementById("class-to-time-input").value;
-    var from_time = document.getElementById("class-from-time-input").value;
-    var monday = document.getElementById("input-days-monday").checked;
-    var tuesday = document.getElementById("input-days-tuesday").checked;
-    var wednesday = document.getElementById("input-days-wednesday").checked;
-    var thursday = document.getElementById("input-days-thursday").checked;
-    var friday = document.getElementById("input-days-friday").checked;
+var timeToRowMapping = {
+    '07': 0, '08': 1, '09': 2, '10': 3, '11': 4, '12': 5,
+    '13': 6, '14': 7, '15': 8, '16': 9, '17': 10, '18': 11,
+    '19': 12, '20': 13, '21': 14
+};
 
-    if (name == "" || subject == "" || from_time == undefined || to_time == undefined
-        || (!monday && !tuesday && !wednesday && !thursday && !friday)){
-           alert("One or more required fields is empty!");
-           return true;
-    } else {
-        return false;
-    }
-}*/
-
-
-
-
-    
-// allClasses = []
-
-// Unnecessary
-/*function createClass(newClass, newSubject, newFromTime, newToTime,){
-    var newClass = Handlebars.templates.class({
-        name: newClass,
-        subject: newSubject,
-        fromTime: newFromTime,
-        toTime: newToTime
-    })
-    console.log("== newClass:", newClass)
-    return newClass
+var daysToColumnMapping = {
+    'monday': 0, 'tuesday': 1, 'wednesday': 2, 'thursday': 3, 'friday': 4
 }
-
-function insertNewClass(newClass, newSubject, newFromTime, newToTime) {
-        var newPostCard = createClass(newClass, newSubject, newFromTime, newToTime);
-        var classContainer = document.querySelector('.class-box');
-        classContainer.insertAdjacentHTML("afterbegin", newPostCard);
-        hideElement();    
-}*/
 
 
 function handleModalAcceptClick() {
-    var collidingTimes = false;
-
     var newClass = document.getElementById("class-name-input").value;
     var newSubject = document.getElementById("class-subject-input").value;
     var newFromTime = document.getElementById("class-from-time-input").value; 
@@ -81,38 +44,11 @@ function handleModalAcceptClick() {
             newDays.push(daysField[i].value);
         }
     }
-
-    //insertNewClass(newClass, newSubject, newFromTime, newToTime);
-
-    /*
-    allClasses.push({
-        name: newClass,
-        subject: newSubject,
-        fromTime: newFromTime,
-        toTime: newToTime,
-        days: newDays
-    })
     
-    // Ensure the class isn't at another time as another class 
-    console.log("Day length: ", newDays.length); 
-    console.log("Class Data[0]:", classDataJSON[0].name);
-
-
-    for(var i = 0; i < newDays.length; i++){
-        for(var j = 0; j < classData.length; j++){
-        console.log("ClassData: ", classData[j]); 
-            for(var k = 0; k < classData[j].days.length; k++){
-                console.log("ClassData.days: ", classData[j].days); 
-                if(newDays[i] == classData[j].days[k]){
-                    if((newFromTime < classData[j].fromTime && newToTime > classData[j].fromTimeTime) 
-                        || (classData[j].fromTime < newFromTime && classData[j].toTime > newFromTime)){
-                        collidingTimes = true;
-                        break;
-                    }
-                }
-            }
-        }
-    }*/
+        // Difference of times, via stackOverflow
+        let startTime = new Date().toDateString("yyyy-MM-dd") + " " + newFromTime;
+        let endTime = new Date().toDateString("yyyy-MM-dd") + " " + newToTime;
+        let diff = (new Date(endTime) - new Date(startTime)) / 60/ 60 / 1000;
 
     if (!newClass || !newSubject || !newFromTime || ! newToTime || newDays[0] == null) {
         alert("One or more required fields is empty!");
@@ -121,9 +57,8 @@ function handleModalAcceptClick() {
     else if((newFromTime < "07:00" || newFromTime > "18:00") || (newToTime < "08:00" || newToTime > "20:00")){
         alert("Classes must be between 7:00 AM and 8:00 PM");
     }
-    // Ensure the class isn't at another time as another class 
-    else if(collidingTimes){
-        alert("Class time collides with another class!");
+    else if(diff < 1){
+        alert("Classes must be at least an hour long");
     }
     else {  
         fetch('/addClass', {
@@ -210,15 +145,6 @@ function removeClass(removeClassButton){
     
 }
 
-var timeToRowMapping = {
-    '7': 0, '8': 1, '9': 2, '10': 3, '11': 4, '12': 5,
-    '13': 6, '14': 7, '15': 8, '16': 9, '17': 10, '18': 11,
-    '19': 12, '20': 13, '21': 14
-};
-
-var daysToColumnMapping = {
-    'monday': 0, 'tuesday': 1, 'wednesday': 2, 'thursday': 3, 'friday': 4
-}
 
 
 function positionClass(classElement, fromTime, toTime, day) {
@@ -229,17 +155,33 @@ function positionClass(classElement, fromTime, toTime, day) {
     // Get the column index for the day
     var columnIndex = daysToColumnMapping[day.toLowerCase()];
 
+  //  const rowHeight = document.getElementById('tuesday-16').clientHeight;
+  const rowHeight = 27.78;
+    console.log(document.getElementById('tuesday-16'));
+    
+    const dayColumnTop = document.getElementById("hourMonday").offsetTop;
+
+
+        console.log("HEIGHT:", rowHeight);
    // Calculate height and top position dynamically
-   var rowHeight = 50; // Adjust this to match your CSS height of rows
-   var topPosition = startRow * rowHeight;
+   //var rowHeight = 50; // Adjust this to match your CSS height of rows
+   var topPosition = dayColumnTop + (startRow * rowHeight) + 10;
+
+
    var classHeight =  rowHeight * (endRow - startRow);
+   console.log("end:", endRow);
+   console.log("Sttaert: ", startRow);
+   console.log("classHeight: ", classHeight);
 
 
    // Apply styles to position the element
    classElement.style.top = `${topPosition}px`;
    classElement.style.height = `${classHeight}px`;
-}
 
+   if(endRow - startRow == 1){
+
+   }
+}
 
 var modalAcceptButton = document.getElementById('modal-accept')
 modalAcceptButton.addEventListener('click', handleModalAcceptClick)

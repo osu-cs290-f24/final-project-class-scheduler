@@ -1,14 +1,4 @@
 {
-  "CS 261": {
-    "name": "CS 261",
-    "subject": "CS",
-    "fromTime": "15:00",
-    "toTime": "18:00",
-    "days": [
-      "wednesday",
-      "friday"
-    ]
-  },
   "MTH 231": {
     "name": "MTH 231",
     "subject": "MTH",
@@ -17,6 +7,26 @@
     "days": [
       "monday",
       "wednesday"
+    ]
+  },
+  "CS 261": {
+    "name": "CS 261",
+    "subject": "Comp Sci",
+    "fromTime": "12:00",
+    "toTime": "14:00",
+    "days": [
+      "tuesday",
+      "thursday"
+    ]
+  },
+  "SUS 100": {
+    "name": "SUS 100",
+    "subject": "Science",
+    "fromTime": "17:00",
+    "toTime": "19:00",
+    "days": [
+      "tuesday",
+      "thursday"
     ]
   }
 }

@@ -58,7 +58,7 @@ h1 {
   overflow-y: auto;
   flex-grow: 1;
   min-height: 0;
-  position:relative;
+  position: relative;
 }
 
 .day-header {
@@ -364,24 +364,16 @@ padding: 10px;
   /* section for individual class strucure */
 
 .class-box {
-    border: 2px solid #fa7900; /* border */
+    border: 2px solid orangered; /* border */
     border-radius: 8px; /* Rounded corners */
     background-color: #f9f9f9; /* Light background */
-    padding: 1px; /* Spacing inside the box */
+    padding: 5px; /* Spacing inside the box */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     max-width: 300px; /* Limit box width */
     font-family: 'Arial', sans-serif; /* Clean font */
-    align-items: center;
     right: 1px;
     width: 80%;
     position: absolute;
-}
-
-.row-container{
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
 }
 
 .remove-class-btn {
@@ -403,11 +395,15 @@ padding: 10px;
 
 /* Class name styling */
 .class-name {
-    font-size: 24px; /* Large font size for title */
+    font-size: 20px; /* Large font size for title */
     font-weight: bold; /* Emphasize the name */
     color: #333; /* Dark text */
     margin-bottom: 10px; /* Space below the name */
     text-align: center; /* Center the title */
+    bottom:0px;
+    left:20%;
+    display: inline;
+    position: relative;
 }
 
 /* Class subject styling */
@@ -416,11 +412,12 @@ padding: 10px;
     color: #555; /* Slightly lighter text color */
     margin-bottom: 8px; /* Space below the subject */
     text-align: center; /* Center the subject */
+    display: none;
 }
 
 /* Time styling */
 .class-time {
-    font-size: 16px; /* Smaller font size for times */
+    font-size: 15px; /* Smaller font size for times */
     color: #666; /* Light gray text color */
     margin-bottom: 6px; /* Space below the time */
     text-align: center; /* Center the time */
