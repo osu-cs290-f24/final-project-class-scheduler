@@ -32,11 +32,22 @@
   "CS 290": {
     "name": "CS 290",
     "subject": "CS",
-    "fromTime": "08:25",
-    "toTime": "09:25",
+    "fromTime": "08:00",
+    "toTime": "10:00",
+    "days": [
+      "monday",
+      "wednesday"
+    ]
+  },
+  "HFSS 211": {
+    "name": "HFSS 211",
+    "subject": "HFSS",
+    "fromTime": "14:00",
+    "toTime": "15:00",
     "days": [
       "tuesday",
-      "thursday"
+      "thursday",
+      "friday"
     ]
   }
 }
