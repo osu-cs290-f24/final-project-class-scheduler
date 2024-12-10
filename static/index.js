@@ -1,3 +1,5 @@
+const { create } = require("handlebars");
+
 function unhideElement(){
     document.getElementById("modal-backdrop").classList.remove("hidden");
     document.getElementById("add-class-modal").classList.remove("hidden");
@@ -41,29 +43,36 @@ function hideElement(){
 
 
 
-// import classData from ".classData.json" assert { type: "json" };
-var classDataJSON;
-fetch('/classData.json', {
-    headers: { 'X-Requested-With': 'fetch-client' } // Add the custom header
-})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Failed to fetch JSON: ${response.status} - ${response.statusText}`);
-        }
-        return response.json(); // Parse JSON response
-    })
-    .then(classDataJSON => {
-        console.log("Class Data Loaded:", classDataJSON);
-    })
-    .catch(error => {
-        console.error("Error fetching classData.json:", error);
-    });
 
     
+// allClasses = []
+
+
+function createClass(newClass, newSubject, newFromTime, newToTime,){
+    console.log("desciption:", nDescription);
+    console.log("price:", nPrice);
+    var newClass = Handlebars.templates.class({
+        name: newClass,
+        subject: newSubject,
+        fromTime: newFromTime,
+        toTime: newToTime
+    })
+    console.log("== postCars:", newClass)
+    return newClass
+}
+
+function insertNewClass(newClass, newSubject, newFromTime, newToTime) {
+        var newPostCard = createClass(newClass, newSubject, newFromTime, newToTime);
+        /*var classContainer = document.querySelector('#class');
+        postContainer.insertAdjacentHTML("beforeend", newPostCard)*/
+        hideModal();    
+    }
 
 
 
 function handleModalAcceptClick() {
+    var collidingTimes = false;
+
     var newClass = document.getElementById("class-name-input").value;
     var newSubject = document.getElementById("class-subject-input").value;
     var newFromTime = document.getElementById("class-from-time-input").value; 
@@ -77,9 +86,21 @@ function handleModalAcceptClick() {
             newDays.push(daysField[i].value);
         }
     }
+
+    insertNewClass(newClass, newSubject, newFromTime, newToTime);
+
+
+
+    /*
+    allClasses.push({
+        name: newClass,
+        subject: newSubject,
+        fromTime: newFromTime,
+        toTime: newToTime,
+        days: newDays
+    })
     
     // Ensure the class isn't at another time as another class 
-    var collidingTimes = false;
     console.log("Day length: ", newDays.length); 
     console.log("Class Data[0]:", classDataJSON[0].name);
 
@@ -98,7 +119,7 @@ function handleModalAcceptClick() {
                 }
             }
         }
-    }
+    }*/
 
     if (!newClass || !newSubject || !newFromTime || ! newToTime || newDays[0] == null) {
         alert("One or more required fields is empty!");
@@ -113,7 +134,7 @@ function handleModalAcceptClick() {
     }
     else {  
         hideElement();
-        /*
+        
         fetch('/addClass', {
             method: "POST",
             body: JSON.stringify({
@@ -130,13 +151,14 @@ function handleModalAcceptClick() {
             if (res.status === 200) {
                 hideElement();
             // Does the template stuff
+            /*
               var photoCardTemplate = Handlebars.templates.photoCard
               var newPhotoCardHTML = photoCardTemplate({
                 url: photoURL,
                 caption: caption
               })
               var photoCardContainer = document.querySelector('.photo-card-container')
-              photoCardContainer.insertAdjacentHTML('beforeend', newPhotoCardHTML)
+              photoCardContainer.insertAdjacentHTML('beforeend', newPhotoCardHTML)*/
             } else {
               alert("An error occurred saving the photo card.")
             }
@@ -144,7 +166,7 @@ function handleModalAcceptClick() {
             
             alert("An error occurred saving the photo card.")
             
-        })*/
+        })
     }
 }
 var modalAcceptButton = document.getElementById('modal-accept')
@@ -155,3 +177,26 @@ document.getElementById("footer-button").addEventListener("click", unhideElement
 document.getElementById("modal-close").addEventListener("click", hideElement);
 
 // document.getElementById("modal-accept").addEventListener("click", checkEmpty);
+
+
+window.addEventListener('DOMContentLoaded', function () {
+
+
+    var classElems = document.getElementsByClassName('class-box')
+    for (var i = 0; i < classElems.length; i++) {
+        allClasses.push(parsePostElem(classElems[i]))
+    }
+    
+    // Display Classes
+    allPosts.forEach(function (post) {
+        if (postPassesFilters(post, filters)) {
+            displayNewPost(
+                post.description,
+                post.photoURL,
+                post.price,
+                post.city,
+                post.condition
+            )
+        }
+    })
+})
