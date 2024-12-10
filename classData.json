@@ -1,53 +1,22 @@
 {
-  "WR 226": {
-    "name": "WR 226",
-    "subject": "WR",
-    "fromTime": "13:37",
-    "toTime": "15:37",
+  "CS 261": {
+    "name": "CS 261",
+    "subject": "CS",
+    "fromTime": "15:00",
+    "toTime": "18:00",
     "days": [
       "wednesday",
       "friday"
     ]
   },
-  "CS 271": {
-    "name": "CS 271",
-    "subject": "CS",
-    "fromTime": "16:00",
-    "toTime": "18:00",
-    "days": [
-      "tuesday",
-      "thursday"
-    ]
-  },
-  "CS 261": {
-    "name": "CS 261",
-    "subject": "CS",
-    "fromTime": "13:24",
-    "toTime": "15:24",
-    "days": [
-      "tuesday",
-      "thursday"
-    ]
-  },
-  "CS 290": {
-    "name": "CS 290",
-    "subject": "CS",
-    "fromTime": "08:00",
-    "toTime": "10:00",
+  "MTH 231": {
+    "name": "MTH 231",
+    "subject": "MTH",
+    "fromTime": "10:00",
+    "toTime": "12:00",
     "days": [
       "monday",
       "wednesday"
-    ]
-  },
-  "HFSS 211": {
-    "name": "HFSS 211",
-    "subject": "HFSS",
-    "fromTime": "14:00",
-    "toTime": "15:00",
-    "days": [
-      "tuesday",
-      "thursday",
-      "friday"
     ]
   }
 }

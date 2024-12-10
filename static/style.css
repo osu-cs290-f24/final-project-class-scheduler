@@ -364,16 +364,24 @@ padding: 10px;
   /* section for individual class strucure */
 
 .class-box {
-    border: 2px solid #4CAF50; /* border */
+    border: 2px solid #fa7900; /* border */
     border-radius: 8px; /* Rounded corners */
     background-color: #f9f9f9; /* Light background */
-    padding: 5px; /* Spacing inside the box */
+    padding: 1px; /* Spacing inside the box */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     max-width: 300px; /* Limit box width */
     font-family: 'Arial', sans-serif; /* Clean font */
+    align-items: center;
     right: 1px;
     width: 80%;
     position: absolute;
+}
+
+.row-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
 }
 
 .remove-class-btn {
