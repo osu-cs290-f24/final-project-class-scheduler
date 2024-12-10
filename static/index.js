@@ -58,7 +58,7 @@ function hideElement(){
     return newClass
 }
 
-function insertNewClass(newClass, newSubject, newFromTime, newToTime) {
+function insertNewClass(newClass, newSubject, ginewFromTime, newToTime) {
         var newPostCard = createClass(newClass, newSubject, newFromTime, newToTime);
         var classContainer = document.querySelector('.class-box');
         classContainer.insertAdjacentHTML("afterbegin", newPostCard);
