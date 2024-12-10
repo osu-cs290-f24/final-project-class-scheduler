@@ -20,8 +20,6 @@ app.get("/", function(req, res, next){
     res.render("schedule")
 })
 
-<<<<<<< HEAD
-=======
 app.get('/classData.json', (req, res) => {
   if (req.headers['x-requested-with'] === 'fetch-client') {
       res.sendFile(__dirname + '/classData.json');
@@ -30,7 +28,6 @@ app.get('/classData.json', (req, res) => {
   }
 });
 
->>>>>>> 47952117e8222237424f1b421887092788b27c2b
 app.post('/addClass', function (req, res, next) {
     console.log("  -- req.body:", req.body)
     if (req.body) {
