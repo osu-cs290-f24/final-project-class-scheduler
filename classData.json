@@ -12,29 +12,11 @@
   },
   "CS 261": {
     "name": "CS 261",
-    "subject": "Data Structures",
-    "fromTime": "12:00",
-    "toTime": "13:00",
+    "subject": "Computer Science",
+    "fromTime": "15:00",
+    "toTime": "17:00",
     "days": [
       "tuesday",
-      "thursday"
-    ]
-  },
-  "WR 227": {
-    "name": "WR 227",
-    "subject": "Writing",
-    "fromTime": "10:00",
-    "toTime": "12:00",
-    "days": [
-      "thursday"
-    ]
-  },
-  "WR 214": {
-    "name": "WR 214",
-    "subject": "Writing",
-    "fromTime": "10:00",
-    "toTime": "11:00",
-    "days": [
       "thursday"
     ]
   }

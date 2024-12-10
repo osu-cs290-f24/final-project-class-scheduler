@@ -10,8 +10,8 @@ function hideElement(){
     // Reset Elements values
     document.getElementById("class-name-input").value = "";
     document.getElementById("class-subject-input").value = "";
-    document.getElementById("class-to-time-input").value = undefined;
-    document.getElementById("class-from-time-input").value = undefined;
+    document.getElementById("class-to-time-input").value = "";
+    document.getElementById("class-from-time-input").value = "";
     document.getElementById("input-days-monday").checked = false;
     document.getElementById("input-days-tuesday").checked = false;
     document.getElementById("input-days-wednesday").checked = false;
@@ -39,30 +39,35 @@ function hideElement(){
     }
 }*/
 
-/*
-// Causes buttons to not work
-var classData = JSON.parse(classData);
-*/
 
-// import classData from ".classData.json" assert { type: "json" };
-var classData;
-fetch('/classData.json', {
-    headers: { 'X-Requested-With': 'fetch-client' } // Add the custom header
-})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Failed to fetch JSON: ${response.status} - ${response.statusText}`);
-        }
-        return response.json(); // Parse JSON response
+
+
+    
+// allClasses = []
+
+// Unnecessary
+/*function createClass(newClass, newSubject, newFromTime, newToTime,){
+    var newClass = Handlebars.templates.class({
+        name: newClass,
+        subject: newSubject,
+        fromTime: newFromTime,
+        toTime: newToTime
     })
-    .then(classData => {
-        console.log("Class Data Loaded:", classData);
-    })
-    .catch(error => {
-        console.error("Error fetching classData.json:", error);
-    });
+    console.log("== newClass:", newClass)
+    return newClass
+}
+
+function insertNewClass(newClass, newSubject, newFromTime, newToTime) {
+        var newPostCard = createClass(newClass, newSubject, newFromTime, newToTime);
+        var classContainer = document.querySelector('.class-box');
+        classContainer.insertAdjacentHTML("afterbegin", newPostCard);
+        hideElement();    
+}*/
+
 
 function handleModalAcceptClick() {
+    var collidingTimes = false;
+
     var newClass = document.getElementById("class-name-input").value;
     var newSubject = document.getElementById("class-subject-input").value;
     var newFromTime = document.getElementById("class-from-time-input").value; 
@@ -76,11 +81,22 @@ function handleModalAcceptClick() {
             newDays.push(daysField[i].value);
         }
     }
+
+    //insertNewClass(newClass, newSubject, newFromTime, newToTime);
+
+    /*
+    allClasses.push({
+        name: newClass,
+        subject: newSubject,
+        fromTime: newFromTime,
+        toTime: newToTime,
+        days: newDays
+    })
     
     // Ensure the class isn't at another time as another class 
-    var collidingTimes = false;
     console.log("Day length: ", newDays.length); 
-    console.log("Class data: ", classData.length); 
+    console.log("Class Data[0]:", classDataJSON[0].name);
+
 
     for(var i = 0; i < newDays.length; i++){
         for(var j = 0; j < classData.length; j++){
@@ -96,7 +112,7 @@ function handleModalAcceptClick() {
                 }
             }
         }
-    }
+    }*/
 
     if (!newClass || !newSubject || !newFromTime || ! newToTime || newDays[0] == null) {
         alert("One or more required fields is empty!");
@@ -111,7 +127,8 @@ function handleModalAcceptClick() {
     }
     else {  
         hideElement();
-        /*
+        location.reload();
+        
         fetch('/addClass', {
             method: "POST",
             body: JSON.stringify({
@@ -125,32 +142,61 @@ function handleModalAcceptClick() {
                 "Content-Type": "application/json"
             }
         }).then(function (res) {
-            if (res.status === 200) {
-                hideElement();
-            // Does the template stuff
-              var photoCardTemplate = Handlebars.templates.photoCard
-              var newPhotoCardHTML = photoCardTemplate({
-                url: photoURL,
-                caption: caption
-              })
-              var photoCardContainer = document.querySelector('.photo-card-container')
-              photoCardContainer.insertAdjacentHTML('beforeend', newPhotoCardHTML)
-            } else {
-              alert("An error occurred saving the photo card.")
+            if (res.status !== 200) {
+              alert("An error occurred saving the class.")
             }
           }).catch(function (err) {
-            
-            alert("An error occurred saving the photo card.")
-            
-        })*/
+            alert("An error occurred saving the class.")
+        })
     }
 }
 
 function filter(){
-    var className = document.getElementById("filter-name").value;
-    var classSubject = document.getElementById("filter-subject").value;
+    var classElems = document.getElementsByClassName('class-box')
 
+    for (var i = 0; i < classElems.length; i++) {
+        classElems[i].classList.remove("hidden");
+    }
 
+    var filterName = document.getElementById("filter-name").value.toLowerCase();
+    var filterSubject = document.getElementById("filter-subject").value.toLowerCase();
+
+    for (var i = 0; i < classElems.length; i++) {
+        var className = classElems[i].querySelector('.class-name').textContent.toLowerCase()
+        var classSubject = classElems[i].querySelector('.class-subject').textContent.toLowerCase()
+        if ((className != filterName && filterName.length > 0)
+            || (classSubject != filterSubject && filterSubject.length > 0)){
+            classElems[i].classList.add("hidden");
+        } else if (filterName == "" && filterSubject == ""){
+            classElems[i].classList.remove("hidden");
+        }
+    }
+}
+
+function removeClass(removeClassButton){
+    var classBox = removeClassButton.closest('.class-box')
+    
+    // Get the name or other identifier of the class to be deleted
+    var className = classBox.querySelector('.class-name').textContent;
+
+    // Send a DELETE request to the server to remove the class
+    fetch('/deleteClass', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: className }) // Send the class name to identify the class to remove
+        })
+    .then(response => {
+        if (response.status === 200) {
+            classBox.remove(); // Remove the element from the DOM
+        } else {
+            console.error("Error deleting class");
+        }
+    })
+    .catch(error => {
+        console.error("Network error:", error);
+    });
 }
 
 
@@ -163,4 +209,10 @@ document.getElementById("modal-close").addEventListener("click", hideElement);
 
 document.getElementById("filter-update-button").addEventListener("click", filter);
 
-// document.getElementById("modal-accept").addEventListener("click", checkEmpty);
+var removeClassButtons = document.querySelectorAll('.remove-class-btn');
+removeClassButtons.forEach(function(removeClassButton) {
+
+    removeClassButton.addEventListener("click", function() {
+        removeClass(removeClassButton)
+    })
+})
