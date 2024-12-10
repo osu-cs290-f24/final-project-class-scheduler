@@ -371,7 +371,9 @@ padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     max-width: 300px; /* Limit box width */
     font-family: 'Arial', sans-serif; /* Clean font */
-    position: relative;
+    right: 1px;
+    width: 80%;
+    position: absolute;
 }
 
 .remove-class-btn {

@@ -18,5 +18,25 @@
       "tuesday",
       "thursday"
     ]
+  },
+  "CS 261": {
+    "name": "CS 261",
+    "subject": "CS",
+    "fromTime": "13:24",
+    "toTime": "15:24",
+    "days": [
+      "tuesday",
+      "thursday"
+    ]
+  },
+  "CS 290": {
+    "name": "CS 290",
+    "subject": "CS",
+    "fromTime": "08:25",
+    "toTime": "09:25",
+    "days": [
+      "tuesday",
+      "thursday"
+    ]
   }
 }

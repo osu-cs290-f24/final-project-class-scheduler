@@ -211,9 +211,9 @@ function removeClass(removeClassButton){
 }
 
 var timeToRowMapping = {
-    '7am': 0, '8am': 1, '9am': 2, '10am': 3, '11am': 4, '12pm': 5,
-    '1pm': 6, '2pm': 7, '3pm': 8, '4pm': 9, '5pm': 10, '6pm': 11,
-    '7pm': 12, '8pm': 13, '9pm': 14
+    '7': 0, '8': 1, '9': 2, '10': 3, '11': 4, '12': 5,
+    '13': 6, '14': 7, '15': 8, '16': 9, '17': 10, '18': 11,
+    '19': 12, '20': 13, '21': 14
 };
 
 var daysToColumnMapping = {
@@ -229,14 +229,15 @@ function positionClass(classElement, fromTime, toTime, day) {
     // Get the column index for the day
     var columnIndex = daysToColumnMapping[day.toLowerCase()];
 
-    // Get the number of time slots the class occupies
-    var classHeight = (endRow - startRow) * 20;  // Each row is __ tall, for example
-    var topPosition = startRow * 20;  // Top position is based on the start time
+   // Calculate height and top position dynamically
+   var rowHeight = 50; // Adjust this to match your CSS height of rows
+   var topPosition = startRow * rowHeight;
+   var classHeight =  rowHeight * (endRow - startRow);
 
-    // Set the class's position in the schedule
-    classElement.style.position = 'absolute';  // Use positioning to place it
-    //classElement.style.top = `${topPosition}px`;
-    //classElement.style.height = `${classHeight}px`;
+
+   // Apply styles to position the element
+   classElement.style.top = `${topPosition}px`;
+   classElement.style.height = `${classHeight}px`;
 }
 
 
@@ -255,12 +256,9 @@ window.onload = function() {
 
     // Loop through each class box and call positionClass
     allClassElements.forEach(function(classElement) {
-        // Now position the class element
-        var fromTime = classElement.querySelector('#from').value;
-        var toTime = classElement.querySelector('#to').value;
-        var days = classElement.dataset.days.split(',');
-
         classElement.classList.add("hidden");
+
+        var days = classElement.dataset.days.split(',');
 
         days.forEach(day => {
             var newClassElement = classElement.cloneNode(true); // Clone the class element
@@ -268,13 +266,19 @@ window.onload = function() {
 
             document.querySelector(`#${day}`).appendChild(newClassElement);
 
+            // Now position the class element
+            var fromTime = newClassElement.dataset.from;
+            var fromHour = fromTime.split(':')[0]
+            var toTime = newClassElement.dataset.to;
+            var toHour = toTime.split(':')[0]
+            
             var removeClassButtons = document.querySelectorAll('.remove-class-btn');
             removeClassButtons.forEach(function(removeClassButton) {
                 removeClassButton.addEventListener("click", function() {
                     removeClass(removeClassButton)
                 })
             })
-            positionClass(newClassElement, fromTime, toTime, day);
+            positionClass(newClassElement, fromHour, toHour, day);
         })
 
         classElement.remove();
