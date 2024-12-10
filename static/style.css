@@ -53,10 +53,12 @@ h1 {
 .day-column {
   display: flex;
   flex-direction: column;
+  position: relative;
   border-right: 1px solid #ddd;
   overflow-y: auto;
   flex-grow: 1;
   min-height: 0;
+  position:relative;
 }
 
 .day-header {
@@ -365,17 +367,17 @@ padding: 10px;
     border: 2px solid #4CAF50; /* border */
     border-radius: 8px; /* Rounded corners */
     background-color: #f9f9f9; /* Light background */
-    padding: 20px; /* Spacing inside the box */
-    margin: 15px; /* Spacing between boxes */
+    padding: 5px; /* Spacing inside the box */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     max-width: 300px; /* Limit box width */
     font-family: 'Arial', sans-serif; /* Clean font */
+    position: relative;
 }
 
 .remove-class-btn {
-  position: relative; /* Position relative to the box */
-  top: 2px; /* Slightly inset from the top */
-  right: 15px; /* Slightly inset from the right */
+  position: relative; /* Position absolute to the class-box */
+  top: 5px; /* 5px inset from the top */
+  left: 10px; /* 10px inset from the left */
   background: none; /* No background */
   border: none; /* No border */
   color: #f44336; /* Red color for the "X" */

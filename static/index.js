@@ -126,9 +126,6 @@ function handleModalAcceptClick() {
         alert("Class time collides with another class!");
     }
     else {  
-        hideElement();
-        location.reload();
-        
         fetch('/addClass', {
             method: "POST",
             body: JSON.stringify({
@@ -142,8 +139,11 @@ function handleModalAcceptClick() {
                 "Content-Type": "application/json"
             }
         }).then(function (res) {
-            if (res.status !== 200) {
-              alert("An error occurred saving the class.")
+            if (res.status === 200) {
+                hideElement();
+                location.reload();
+            } else {
+                alert("An error occurred saving the class.")
             }
           }).catch(function (err) {
             alert("An error occurred saving the class.")
@@ -179,6 +179,9 @@ function removeClass(removeClassButton){
     // Get the name or other identifier of the class to be deleted
     var className = classBox.querySelector('.class-name').textContent;
 
+    // Select all class-box elements
+    var allClassBoxes = document.querySelectorAll('.class-box');
+
     // Send a DELETE request to the server to remove the class
     fetch('/deleteClass', {
         method: 'DELETE',
@@ -189,7 +192,13 @@ function removeClass(removeClassButton){
         })
     .then(response => {
         if (response.status === 200) {
-            classBox.remove(); // Remove the element from the DOM
+            allClassBoxes.forEach(function(box) {
+                // If the name of the class matches, remove it
+                var boxName = box.querySelector('.class-name').textContent;
+                if (boxName === className) {
+                    box.remove(); // Remove this classBox from the DOM
+                }
+            });
         } else {
             console.error("Error deleting class");
         }
@@ -197,6 +206,37 @@ function removeClass(removeClassButton){
     .catch(error => {
         console.error("Network error:", error);
     });
+
+    
+}
+
+var timeToRowMapping = {
+    '7am': 0, '8am': 1, '9am': 2, '10am': 3, '11am': 4, '12pm': 5,
+    '1pm': 6, '2pm': 7, '3pm': 8, '4pm': 9, '5pm': 10, '6pm': 11,
+    '7pm': 12, '8pm': 13, '9pm': 14
+};
+
+var daysToColumnMapping = {
+    'monday': 0, 'tuesday': 1, 'wednesday': 2, 'thursday': 3, 'friday': 4
+}
+
+
+function positionClass(classElement, fromTime, toTime, day) {
+    // Map the time to row (you'll need to ensure the time format matches)
+    var startRow = timeToRowMapping[fromTime];
+    var endRow = timeToRowMapping[toTime];
+
+    // Get the column index for the day
+    var columnIndex = daysToColumnMapping[day.toLowerCase()];
+
+    // Get the number of time slots the class occupies
+    var classHeight = (endRow - startRow) * 20;  // Each row is __ tall, for example
+    var topPosition = startRow * 20;  // Top position is based on the start time
+
+    // Set the class's position in the schedule
+    classElement.style.position = 'absolute';  // Use positioning to place it
+    //classElement.style.top = `${topPosition}px`;
+    //classElement.style.height = `${classHeight}px`;
 }
 
 
@@ -209,10 +249,34 @@ document.getElementById("modal-close").addEventListener("click", hideElement);
 
 document.getElementById("filter-update-button").addEventListener("click", filter);
 
-var removeClassButtons = document.querySelectorAll('.remove-class-btn');
-removeClassButtons.forEach(function(removeClassButton) {
 
-    removeClassButton.addEventListener("click", function() {
-        removeClass(removeClassButton)
-    })
-})
+window.onload = function() {
+    var allClassElements = document.querySelectorAll('.class-box');  // Select all class boxes
+
+    // Loop through each class box and call positionClass
+    allClassElements.forEach(function(classElement) {
+        // Now position the class element
+        var fromTime = classElement.querySelector('#from').value;
+        var toTime = classElement.querySelector('#to').value;
+        var days = classElement.dataset.days.split(',');
+
+        classElement.classList.add("hidden");
+
+        days.forEach(day => {
+            var newClassElement = classElement.cloneNode(true); // Clone the class element
+            newClassElement.classList.remove("hidden")
+
+            document.querySelector(`#${day}`).appendChild(newClassElement);
+
+            var removeClassButtons = document.querySelectorAll('.remove-class-btn');
+            removeClassButtons.forEach(function(removeClassButton) {
+                removeClassButton.addEventListener("click", function() {
+                    removeClass(removeClassButton)
+                })
+            })
+            positionClass(newClassElement, fromTime, toTime, day);
+        })
+
+        classElement.remove();
+    });
+};

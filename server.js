@@ -3,7 +3,15 @@
   var express = require('express')
   var exphbs = require('express-handlebars')
 
-  var classData = require("./classData.json")
+  var classData = {}
+
+  fs.readFile(path.join(__dirname, 'classData.json'), 'utf8', (err, data) => {
+    if (err) {
+        console.error("Error reading class data file:", err);
+    } else {
+        classData = JSON.parse(data);
+    }
+});
 
   var app = express()
   var port = process.env.PORT || 8500
@@ -17,17 +25,27 @@
   app.use(express.static('static'))
 
   app.get("/", function(req, res, next){
-    if (classData) {
-      const classesArray = Object.values(classData); // Convert to an array
+    fs.readFile(path.join(__dirname, "classData.json"), "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading class data file:", err);
+        return res.status(500).send("Error loading schedule.");
+      }
+      var classData = JSON.parse(data);
+      var classesArray = Object.values(classData); // Convert to an array
       res.status(200).render('schedule', { classes: classesArray });
-    } else {
-      next();
-    }
+    })
   })
 
   app.post('/addClass', function (req, res, next) {
       console.log("  -- req.body:", req.body)
       if (req.body) {
+          fs.readFile(path.join(__dirname, "classData.json"), "utf8", (err, data) => {
+          if (err) {
+            return res.status(500).send("Error reading class data file.");
+          }
+    
+          var classData = JSON.parse(data);
+
           classData[req.body.name] = {
             name: req.body.name,
             subject: req.body.subject,
@@ -35,10 +53,7 @@
             toTime: req.body.toTime,
             days: req.body.days
           }
-          fs.writeFile(
-            __dirname + "/classData.json",
-            JSON.stringify(classData, null, 2),
-            function (err, result) {
+          fs.writeFile(path.join(__dirname, "classData.json"), JSON.stringify(classData, null, 2), function (err) {
               if (!err) {
                 res.status(200).send()
               } else {
@@ -46,6 +61,7 @@
               }
             }
           )
+        })
         } else {
           next()
         }

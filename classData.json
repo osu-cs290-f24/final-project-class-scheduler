@@ -1,20 +1,19 @@
 {
-  "MTH 260": {
-    "name": "MTH 260",
-    "subject": "Calculus",
-    "fromTime": "10:00",
-    "toTime": "12:00",
+  "WR 226": {
+    "name": "WR 226",
+    "subject": "WR",
+    "fromTime": "13:37",
+    "toTime": "15:37",
     "days": [
-      "monday",
       "wednesday",
       "friday"
     ]
   },
-  "CS 261": {
-    "name": "CS 261",
-    "subject": "Computer Science",
-    "fromTime": "15:00",
-    "toTime": "17:00",
+  "CS 271": {
+    "name": "CS 271",
+    "subject": "CS",
+    "fromTime": "16:00",
+    "toTime": "18:00",
     "days": [
       "tuesday",
       "thursday"
