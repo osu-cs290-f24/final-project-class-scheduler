@@ -1,0 +1,423 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+header {
+  background-color: rgb(255, 132, 50);
+  padding: 20px 0;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-image {
+  max-width: 100px;
+  height: auto;
+  margin: 0 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+h1 {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+}
+
+.calendar {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  overflow-y: auto;
+  background-color: white;
+  border-top: 1px solid black;
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  flex-grow: 1;
+  min-height: 0;
+  position:relative;
+}
+
+.day-header {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgb(255, 132, 50);
+  color: white;
+  padding: 10px;
+  border-bottom: 2px solid black;
+}
+
+.day-column:last-child {
+  border-right: none;
+}
+
+.hour-labels {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.hour {
+  font-size: 15px;
+  color: #555;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  position: relative;
+  padding-left: 0px;
+}
+
+.hour:last-child {
+  border-bottom: none;
+}
+
+.footer-section {
+  background-color: rgb(255, 132, 50);
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 90px;
+  height: 90px;
+  background-color: rgb(255, 115, 0);
+  border: 4px solid black;
+  border-radius: 50%;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+#add-class-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  overflow: scroll;
+  border: black;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-dialog {
+width: auto;
+max-width: 600px;
+min-width: 350px;
+min-height: 300px;
+margin: 40px auto;
+background-color: #f77700;
+border-radius: 15px;
+border-color: black;
+border-width: 5px;
+}
+
+.modal-header {
+position: relative;
+padding: 10px 20px;
+color: black;
+}
+
+.modal-header h3 {
+margin: 0;
+font-size: 28px;
+}
+
+#modal-close {
+position: absolute;
+right: 10px;
+top: 5px;
+font-size: 24px;
+border: none;
+background: none;
+padding: 0;
+cursor: pointer;
+}
+
+.modal-body {
+padding: 20px;
+}
+
+.class-input-element {
+display: flex;
+align-items: center;
+font-size: 20px;
+margin: 10px 0;
+color: black;
+}
+
+.class-input-element > label {
+font-weight: 600;
+flex: 1 75px;
+margin-right: 10px;
+}
+
+.class-input-element input {
+flex: 6 200px;
+padding: 8px;
+font-size: 20px;
+border: 1px solid #aaa;
+}
+
+.class-fieldset {
+flex: 1 100%;
+border: 1px solid #ababab;
+}
+
+.modal-footer {
+display: flex;
+justify-content: flex-end;
+padding: 10px 10px 20px 10px;
+}
+
+#modal-accept {
+  width: 150px;
+  height: 50px;
+  margin-right: 20px;
+  font-size: large;
+}
+
+#modal-accept:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+#input-days{
+display: flex;
+flex-direction: row;
+align-items: center; /* Align items vertically */
+border: none;
+gap: 10px; /* Space between elements */
+padding: 10px;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.filter-by-name,
+.filter-by-subject {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-by-name label,
+.filter-by-subject label {
+  font-weight: bold;
+  color: white;
+}
+
+.filter-by-name input,
+.filter-by-subject input {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.schedule-actions {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.save-schedule {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 90px;
+  height: 90px;
+  background-color: white;
+  border: 4px solid black;
+  border-radius: 50%;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-schedule:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.error-container {
+  text-align: center; /* Centers the text horizontally */
+  font-family: Arial, sans-serif; /* Sets a clean font */
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.error-container h2 {
+  font-size: 72px; /* Large font for the error code */
+  color: #ff7b00; /* Eye-catching color */
+  margin: 0; /* Removes any extra space */
+}
+
+.error-container h3 {
+  font-size: 24px; /* Smaller font for the message */
+  color: #333; /* Subtle text color */
+  margin: 10px 0; /* Adds some space between the headers */
+}
+
+#filter-update-button {
+  background-color: #000000; /* Black */
+  color: white; /* Text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding */
+  margin: 10px;
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Hover effect */
+#filter-update-button:hover {
+  background-color: #443d36; /* Greyish */
+  transform: scale(1.05); /* Slightly enlarge */
+}
+
+.filter-container{
+  border-style: solid;
+  padding: 5px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: black;
+}
+  /* section for individual class strucure */
+
+.class-box {
+    border: 2px solid #4CAF50; /* border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    padding: 5px; /* Spacing inside the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 300px; /* Limit box width */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    right: 1px;
+    width: 80%;
+    position: absolute;
+}
+
+.remove-class-btn {
+  position: relative; /* Position absolute to the class-box */
+  top: 5px; /* 5px inset from the top */
+  left: 10px; /* 10px inset from the left */
+  background: none; /* No background */
+  border: none; /* No border */
+  color: #f44336; /* Red color for the "X" */
+  font-size: 20px; /* Slightly larger for visibility */
+  font-weight: bold; /* Bold for emphasis */
+  cursor: pointer; /* Pointer cursor for interaction */
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.remove-class-btn:hover {
+  color: #922121; /* Darker red on hover */
+}
+
+/* Class name styling */
+.class-name {
+    font-size: 15px; /* Large font size for title */
+    font-weight: bold; /* Emphasize the name */
+    color: #333; /* Dark text */
+    margin-bottom: 10px; /* Space below the name */
+    text-align: center; /* Center the title */
+    bottom:0px;
+    left:20%;
+    display: inline;
+    position: relative;
+}
+
+/* Class subject styling */
+.class-subject {
+    font-size: 18px; /* Medium font size */
+    color: #555; /* Slightly lighter text color */
+    margin-bottom: 8px; /* Space below the subject */
+    text-align: center; /* Center the subject */
+}
+
+/* Time styling */
+.class-time {
+    font-size: 16px; /* Smaller font size for times */
+    color: #666; /* Light gray text color */
+    margin-bottom: 6px; /* Space below the time */
+    text-align: center; /* Center the time */
+}

@@ -1,0 +1,59 @@
+{
+  "WR 226": {
+    "name": "WR 226",
+    "subject": "WR",
+    "fromTime": "13:37",
+    "toTime": "15:37",
+    "days": [
+      "wednesday",
+      "friday"
+    ]
+  },
+  "CS 271": {
+    "name": "CS 271",
+    "subject": "CS",
+    "fromTime": "16:00",
+    "toTime": "18:00",
+    "days": [
+      "tuesday",
+      "thursday"
+    ]
+  },
+  "CS 290": {
+    "name": "CS 290",
+    "subject": "CS",
+    "fromTime": "08:00",
+    "toTime": "10:00",
+    "days": [
+      "monday",
+      "wednesday"
+    ]
+  },
+  "GEOG 400": {
+    "name": "GEOG 400",
+    "subject": "Geography",
+    "fromTime": "13:00",
+    "toTime": "15:00",
+    "days": [
+      "monday"
+    ]
+  },
+  "SUS 100": {
+    "name": "SUS 100",
+    "subject": "Sustainability",
+    "fromTime": "10:00",
+    "toTime": "12:00",
+    "days": [
+      "tuesday"
+    ]
+  },
+  "GEOG 600": {
+    "name": "GEOG 600",
+    "subject": "Geography",
+    "fromTime": "17:00",
+    "toTime": "19:00",
+    "days": [
+      "wednesday"
+    ]
+  }
+}

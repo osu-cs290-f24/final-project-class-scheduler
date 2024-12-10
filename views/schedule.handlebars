@@ -1,0 +1,196 @@
+
+<div class="calendar">
+    {{#each classes}}
+      {{> class}}
+    {{/each}}
+    <!-- Monday -->
+<div class="day-column" id="monday">
+  <div class="day-header">Monday</div>
+    <div class="hour-labels" id = "hourMonday">
+    <div class="hour" id="monday-07">7am</div>
+    <div class="hour" id="monday-08">8am</div>
+    <div class="hour" id="monday-09">9am</div>
+    <div class="hour" id="monday-10">10am</div>
+    <div class="hour" id="monday-11">11am</div>
+    <div class="hour" id="monday-12">12pm</div>
+    <div class="hour" id="monday-13">1pm</div>
+    <div class="hour" id="monday-14">2pm</div>
+    <div class="hour" id="monday-15">3pm</div>
+    <div class="hour" id="monday-16">4pm</div>
+    <div class="hour" id="monday-17">5pm</div>
+    <div class="hour" id="monday-18">6pm</div>
+    <div class="hour" id="monday-19">7pm</div>
+    <div class="hour" id="monday-20">8pm</div>
+    <div class="hour" id="monday-21">9pm</div>
+  </div>
+</div>
+
+<div class="day-column" id="tuesday">
+  <div class="day-header">Tuesday</div>
+  <div class="hour-labels">
+    <div class="hour" id="tuesday-07">7am</div>
+    <div class="hour" id="tuesday-08">8am</div>
+    <div class="hour" id="tuesday-09">9am</div>
+    <div class="hour" id="tuesday-10">10am</div>
+    <div class="hour" id="tuesday-11">11am</div>
+    <div class="hour" id="tuesday-12">12pm</div>
+    <div class="hour" id="tuesday-13">1pm</div>
+    <div class="hour" id="tuesday-14">2pm</div>
+    <div class="hour" id="tuesday-15">3pm</div>
+    <div class="hour" id="tuesday-16">4pm</div>
+    <div class="hour" id="tuesday-17">5pm</div>
+    <div class="hour" id="tuesday-18">6pm</div>
+    <div class="hour" id="tuesday-19">7pm</div>
+    <div class="hour" id="tuesday-20">8pm</div>
+    <div class="hour" id="tuesday-21">9pm</div>
+  </div>
+</div>
+
+<div class="day-column" id="wednesday">
+  <div class="day-header">Wednesday</div>
+  <div class="hour-labels">
+    <div class="hour" id="wednesday-07">7am</div>
+    <div class="hour" id="wednesday-08">8am</div>
+    <div class="hour" id="wednesday-09">9am</div>
+    <div class="hour" id="wednesday-10">10am</div>
+    <div class="hour" id="wednesday-11">11am</div>
+    <div class="hour" id="wednesday-12">12pm</div>
+    <div class="hour" id="wednesday-13">1pm</div>
+    <div class="hour" id="wednesday-14">2pm</div>
+    <div class="hour" id="wednesday-15">3pm</div>
+    <div class="hour" id="wednesday-16">4pm</div>
+    <div class="hour" id="wednesday-17">5pm</div>
+    <div class="hour" id="wednesday-18">6pm</div>
+    <div class="hour" id="wednesday-19">7pm</div>
+    <div class="hour" id="wednesday-20">8pm</div>
+    <div class="hour" id="wednesday-21">9pm</div>
+  </div>
+</div>
+
+<div class="day-column" id="thursday">
+  <div class="day-header">Thursday</div>
+  <div class="hour-labels">
+    <div class="hour" id="thursday-07">7am</div>
+    <div class="hour" id="thursday-08">8am</div>
+    <div class="hour" id="thursday-09">9am</div>
+    <div class="hour" id="thursday-10">10am</div>
+    <div class="hour" id="thursday-11">11am</div>
+    <div class="hour" id="thursday-12">12pm</div>
+    <div class="hour" id="thursday-13">1pm</div>
+    <div class="hour" id="thursday-14">2pm</div>
+    <div class="hour" id="thursday-15">3pm</div>
+    <div class="hour" id="thursday-16">4pm</div>
+    <div class="hour" id="thursday-17">5pm</div>
+    <div class="hour" id="thursday-18">6pm</div>
+    <div class="hour" id="thursday-19">7pm</div>
+    <div class="hour" id="thursday-20">8pm</div>
+    <div class="hour" id="thursday-21">9pm</div>
+  </div>
+</div>
+
+<div class="day-column" id="friday">
+  <div class="day-header">Friday</div>
+  <div class="hour-labels">
+    <div class="hour" id="friday-07">7am</div>
+    <div class="hour" id="friday-08">8am</div>
+    <div class="hour" id="friday-09">9am</div>
+    <div class="hour" id="friday-10">10am</div>
+    <div class="hour" id="friday-11">11am</div>
+    <div class="hour" id="friday-12">12pm</div>
+    <div class="hour" id="friday-13">1pm</div>
+    <div class="hour" id="friday-14">2pm</div>
+    <div class="hour" id="friday-15">3pm</div>
+    <div class="hour" id="friday-16">4pm</div>
+    <div class="hour" id="friday-17">5pm</div>
+    <div class="hour" id="friday-18">6pm</div>
+    <div class="hour" id="friday-19">7pm</div>
+    <div class="hour" id="friday-20">8pm</div>
+    <div class="hour" id="friday-21">9pm</div>
+  </div>
+</div>
+
+
+  </div>
+  <footer class="footer-section">
+    <footer class="footer-section">
+
+    <div class="filter-container">
+    <label for="filter-name">Filter by:</label>
+    <div class="filter-group">
+      <div class="filter-option">
+        <label for="filter-name">Name:</label>
+        <input type="text" id="filter-name" placeholder="Enter class name">
+      </div>
+      <div class="filter-option">
+        <label for="filter-subject">Subject:</label>
+        <input type="text" id="filter-subject" placeholder="Enter subject">
+      </div>
+    </div>
+  </div>
+  <button id="filter-update-button" class="action-button">Filter</button>
+
+
+  <!-- <div class="schedule-actions">
+    <button id="save-schedule-button" class="save-schedule">Save Schedule</button>
+  </div>  -->
+
+    <button class="footer-button" id="footer-button">Add Class</button>
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="add-class-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Add a Class</h3>
+          <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+        </div>
+
+    <div class="modal-body">
+
+      <div class="class-input-element">
+        <label for="class-name-input">Class Name</label>
+        <input type="text" id="class-name-input"></input>
+      </div>
+
+      <div class="class-input-element">
+        <label for="class-subject-input">Subject</label>
+        <input type="text" id="class-subject-input">
+      </div>
+
+      <div class="class-input-element">
+        <label for="class-from-time-input">From:</label>
+        <input type="time" id="class-from-time-input" name="class-from-time-input">
+
+        <label for="class-to-time-input">To:</label>
+        <input type="time" id="class-to-time-input" name="class-to-time-input">
+      </div>
+
+      <div class="class-input-element">
+        <fieldset id="input-days" class="input-fieldset">
+          <div>
+            <input type="checkbox" name="input-days" id="input-days-monday" value="monday">
+            <label for="input-days-monday">Monday</label>
+          </div>
+          <div>
+            <input type="checkbox" name="input-days" id="input-days-tuesday" value="tuesday">
+            <label for="input-days-tuesday">Tuesday</label>
+          </div>
+          <div>
+            <input type="checkbox" name="input-days" id="input-days-wednesday" value="wednesday">
+            <label for="input-days-wednesday">Wednesday</label>
+          </div>
+          <div>
+            <input type="checkbox" name="input-days" id="input-days-thursday" value="thursday">
+            <label for="input-days-thursday">Thursday</label>
+          </div>
+          <div>
+            <input type="checkbox" name="input-days" id="input-days-friday" value="friday">
+            <label for="input-days-friday">Friday</label>
+          </div>
+        </fieldset>
+        </div>
+
+        <div class="modal-footer">
+        <button type="button" id="modal-accept" class="action-button">Add Class</button>
+        </div>
+  </footer>
